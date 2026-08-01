@@ -179,13 +179,16 @@
       <button onclick="nextStep(2)">Открыть ✨</button>
     </div>
 
-    <!-- Шаг 2: Главный вопрос + Убегающая кнопка -->
-<div class="btn-container" id="no-container">
-  <button class="btn-yes" onclick="nextStep(3)">Да! 💖</button>
-  <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Нет 😭</button>
-</div>
+<!-- Шаг 2: Главный вопрос + Убегающая кнопка -->
+    <div class="step" id="step-2">
+      <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
+      <h2>Пойдешь со мной на свидание? 💕💕</h2>
+      <div class="btn-container" id="no-container">
+        <button class="btn-yes" onclick="nextStep(3)">Да! 💖</button>
+        <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Нет 😭</button>
+      </div>
     </div>
-
+    
     <!-- Шаг 3: Выбор даты и времени -->
     <div class="step" id="step-3">
       <h2>Отлично! 🎉</h2>
