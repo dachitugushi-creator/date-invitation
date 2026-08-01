@@ -3,60 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Приглашение</title>
+  <title>Приглашение для любимой 💕</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      height: 100vh;
+      padding: 0;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #ffe6f0;
+      background-image: radial-gradient(#ffb6c1 1px, transparent 1px);
+      background-size: 20px 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
 
     .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 25px;
+      border-radius: 25px;
       text-align: center;
-      width: 350px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 380px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+      border: 3px solid #ffb6c1;
+      position: relative;
+      z-index: 10;
     }
 
     .step {
       display: none;
+      animation: fadeIn 0.5s ease;
     }
 
     .step.active {
       display: block;
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .sticker {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
-      border-radius: 15px;
+      border-radius: 20px;
       margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #ff3366;
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
     button {
-      padding: 12px 20px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 15px;
+      border-radius: 20px;
       cursor: pointer;
-      background: #ff5c8a;
+      background: linear-gradient(135deg, #ff6b8b, #ff8e53);
       color: white;
       font-size: 16px;
       font-weight: bold;
-      transition: transform 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 15px rgba(255, 107, 139, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     button:hover {
       transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 107, 139, 0.6);
     }
 
-    /* Кнопки в один ряд */
     .btn-container {
       display: flex !important;
       flex-direction: row !important;
@@ -86,16 +120,19 @@
     .datetime-picker {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       margin: 20px 0;
     }
 
     .datetime-picker input {
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid #ffb6c1;
       font-size: 16px;
       text-align: center;
+      outline: none;
+      color: #ff3366;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -106,24 +143,25 @@
     <div class="step active" id="step-1">
       <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
       <h1>Привет, бусинка! 💖</h1>
-      <p>У меня к тебе есть один очень важный вопрос...</p>
-      <button onclick="nextStep(2)">Открыть ✨</button>
+      <p>Ты у меня самое невероятное солнышко ✨ У меня к тебе есть кое-что очень важное...</p>
+      <button onclick="nextStep(2)">Открыть записочку 💌</button>
     </div>
 
-    <!-- Шаг 2: Главный вопрос -->
+    <!-- Шаг 2: Признание и вопрос -->
     <div class="step" id="step-2">
       <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
-      <h2>Пойдешь со мной на свидание? 💕💕</h2>
+      <h2>Любимая моя... 💕</h2>
+      <p>Я обожаю проводить с тобой время! Пойдёшь со мной на самое милое свидание? 🥺🌸</p>
       <div class="btn-container" id="no-container">
-        <button class="btn-yes" onclick="nextStep(3)">Да! 💖</button>
+        <button class="btn-yes" onclick="nextStep(3)">Конечно да! 💖</button>
         <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Нет 😭</button>
       </div>
     </div>
 
     <!-- Шаг 3: Выбор даты и времени -->
     <div class="step" id="step-3">
-      <h2>Отлично! 🎉</h2>
-      <p>Выбери, когда ты свободна:</p>
+      <h2>Урааа! 🥰✨</h2>
+      <p>Моё солнышко согласилась! Выбери удобную дату и время, когда мы пойдём гулять:</p>
       <div class="datetime-picker">
         <input type="date" id="date-picker">
         <input type="time" id="time-picker" value="18:00">
@@ -133,8 +171,9 @@
 
     <!-- Шаг 4: Финал -->
     <div class="step" id="step-4">
-      <h2>Ура! До встречи! 🥰</h2>
-      <p>Я буду очень тебя ждать!</p>
+      <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
+      <h2>Договорились, бусинка! 💕</h2>
+      <p>Я буду очень-очень тебя ждать! Ты у меня самая лучшая 💖✨</p>
     </div>
   </div>
 
@@ -150,12 +189,6 @@
       const btn = document.getElementById('btn-no');
       const container = document.getElementById('no-container');
       
-      const containerRect = container.getBoundingClientRect();
-      const btnRect = btn.getBoundingClientRect();
-      
-      const maxX = containerRect.width - btnRect.width;
-      const maxY = 150; 
-
       const randomX = (Math.random() - 0.5) * 200;
       const randomY = (Math.random() - 0.5) * 100;
 
