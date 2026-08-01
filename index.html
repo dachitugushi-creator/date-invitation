@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Запрет кэширования, чтобы всё сразу обновлялось -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -141,7 +140,6 @@
       font-weight: bold;
     }
 
-    /* Сетка для выбора еды */
     .food-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -189,17 +187,17 @@
 <body>
 
   <div class="card">
-    <!-- Шаг 1: Приветствие -->
+    <!-- Шаг 1 -->
     <div class="step active" id="step-1">
-      <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
+      <img class="sticker" src="https://i.postimg.co/3wX3Rk8m/spitz1.gif" alt="Cute Dog">
       <h1>Привет, бусинка! 💖</h1>
       <p>Ты у меня самое невероятное солнышко ✨ У меня к тебе есть кое-что очень важное...</p>
       <button onclick="nextStep(2)">Открыть записочку 💌</button>
     </div>
 
-    <!-- Шаг 2: Признание и вопрос -->
+    <!-- Шаг 2 -->
     <div class="step" id="step-2">
-      <img class="sticker" src="https://media.tenor.com/images/150bf42ea3b2f5ecbfa6ef90e9d6d52d/tenor.gif" alt="Cute Dog Happy">
+      <img class="sticker" src="https://i.postimg.co/43xT6R0J/spitz2.gif" alt="Cute Dog Happy">
       <h2>Любимая моя... 💕</h2>
       <p>Я обожаю проводить с тобой время! Пойдёшь со мной на самое милое свидание? 🥺🌸</p>
       <div class="btn-container" id="no-container">
@@ -208,9 +206,9 @@
       </div>
     </div>
 
-    <!-- Шаг 3: Выбор даты и времени -->
+    <!-- Шаг 3 -->
     <div class="step" id="step-3">
-      <img class="sticker" src="https://media.tenor.com/images/3d71ff03b51b72e007d4b4a3c2cf1d50/tenor.gif" alt="Cute Dog Dance">
+      <img class="sticker" src="https://i.postimg.co/D022pW48/spitz3.gif" alt="Cute Dog Dance">
       <h2>Урааа! 🥰✨</h2>
       <p>Моё солнышко согласилась! Выбери дату, и мы идём на свидание 💕</p>
       <div class="datetime-picker">
@@ -220,9 +218,9 @@
       <button onclick="nextStep(4)">Дальше к вкусностям ➔</button>
     </div>
 
-    <!-- Шаг 4: Выбор еды -->
+    <!-- Шаг 4 -->
     <div class="step" id="step-4">
-      <img class="sticker" src="https://media.tenor.com/images/b078a6358db8a97c4bd0c9d71c8282bd/tenor.gif" alt="Cute Dog Eating">
+      <img class="sticker" src="https://i.postimg.co/BvYpQx7y/spitz4.gif" alt="Cute Dog Eating">
       <h2>А что покушаем? 🍕🍣</h2>
       <p>Выбери, чем будем лакомиться:</p>
       <div class="food-grid">
@@ -237,9 +235,9 @@
       <button onclick="nextStep(5)">Запечатать свидание ✨</button>
     </div>
 
-    <!-- Шаг 5: Финал -->
+    <!-- Шаг 5 -->
     <div class="step" id="step-5">
-      <img class="sticker" src="https://media.tenor.com/images/58db8ffefeddd0bd19293883b2df7e8f/tenor.gif" alt="Cute Dog Love">
+      <img class="sticker" src="https://i.postimg.co/Y2Bkx391/spitz5.gif" alt="Cute Dog Love">
       <h2>Договорились, бусинка! 💕</h2>
       <p>Я всё запомнил и буду очень-очень тебя ждать! Ты у меня самая лучшая 💖✨</p>
     </div>
