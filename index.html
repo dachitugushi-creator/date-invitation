@@ -1,63 +1,286 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приглашение 💖</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приглашение для тебя 💕</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+    }
 
+    body {
+      background-color: #ffe6f0;
+      background-image: radial-gradient(#ffb6c1 1px, transparent 1px);
+      background-size: 20px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Карточка сайта */
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 25px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+      border: 3px solid #ff99c8;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      z-index: 10;
+      position: relative;
+    }
+
+    /* Стикеры и гифки */
+    .sticker {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 15px;
+    }
+
+    h1, h2 {
+      color: #ff4d8d;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Шаги */
+    .step {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Кнопки */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      position: relative;
+      min-height: 50px;
+    }
+
+    button, .next-btn {
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    /* Убегающая кнопка Нет */
+    #btn-no {
+      background: linear-gradient(135deg, #a8a8a8 0%, #d1d1d1 100%);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: absolute;
+      transition: all 0.2s ease;
+    }
+
+    /* Поля выбора даты и времени */
+    .datetime-picker {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="date"], input[type="time"] {
+      padding: 10px;
+      border: 2px solid #ff99c8;
+      border-radius: 12px;
+      outline: none;
+      font-size: 1rem;
+      text-align: center;
+      color: #ff4d8d;
+    }
+
+    /* Кнопки еды */
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .food-option {
+      background: #fff0f5;
+      border: 2px solid #ffb6c1;
+      color: #ff4d8d;
+      padding: 10px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .food-option.selected {
+      background: #ff758c;
+      color: white;
+      border-color: #ff758c;
+    }
+
+    /* Фон с падающими сердечками */
+    .heart-bg {
+      position: absolute;
+      color: #ffb6c1;
+      font-size: 20px;
+      top: -20px;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
 <body>
 
-<div class="card">
+  <div class="card">
+    
+    <!-- Шаг 1: Приветствие -->
+    <div class="step active" id="step-1">
+      <img class="sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYzb2FmMXYxczYxb2Vrb2c3a3Aya2tqbTlqdXZuMG42aWkxcHZwYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Pomeranian Spitz">
+      <h1>Привет, бусинка! 💖</h1>
+      <p>У меня к тебе есть один очень важный вопрос...</p>
+      <button onclick="nextStep(2)">Открыть ✨</button>
+    </div>
 
-    <section id="welcome">
-        <h1>Привет! 😊</h1>
-        <p>У меня к тебе важный вопрос...</p>
-        <button onclick="next('date')">Продолжить</button>
-    </section>
+    <!-- Шаг 2: Главный вопрос + Убегающая кнопка -->
+    <div class="step" id="step-2">
+      <img class="sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzByYnh2ZnJ1ZnY3NW13aTFmM3I1Yms1ZHp0ZnZneXZwOXNqNXk5ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02vf3Ak/giphy.gif" alt="Cute Spitz">
+      <h2>Пойдешь со мной на свидание? 💕💕</h2>
+      <div class="btn-container" id="no-container">
+        <button onclick="nextStep(3)">Да! 💖</button>
+        <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Нет 😭</button>
+      </div>
+    </div>
 
+    <!-- Шаг 3: Выбор даты и времени -->
+    <div class="step" id="step-3">
+      <h2>Отлично! 🎉</h2>
+      <p>Выбери, когда ты свободна:</p>
+      <div class="datetime-picker">
+        <input type="date" id="date-picker">
+        <input type="time" id="time-picker" value="18:00">
+      </div>
+      <button onclick="nextStep(4)">Дальше ➡️</button>
+    </div>
 
-    <section id="date" class="hidden">
-        <h1>Пойдёшь со мной на свидание? 💕</h1>
+    <!-- Шаг 4: Выбор еды -->
+    <div class="step" id="step-4">
+      <h2>Что будем покушать? 🍕</h2>
+      <p>Выбери всё, что хочешь:</p>
+      <div class="food-grid">
+        <div class="food-option" onclick="toggleFood(this)">Пицца 🍕</div>
+        <div class="food-option" onclick="toggleFood(this)">Бургеры 🍔</div>
+        <div class="food-option" onclick="toggleFood(this)">Суши 🍣</div>
+        <div class="food-option" onclick="toggleFood(this)">Шаурма 🌯</div>
+        <div class="food-option" onclick="toggleFood(this)" style="grid-column: span 2;">Сладкое 🍰</div>
+      </div>
+      <button onclick="finish()">Готово! 🥰</button>
+    </div>
 
-        <button onclick="next('calendar')">Да ❤️</button>
-        <button id="noBtn">Нет 😢</button>
-    </section>
+    <!-- Шаг 5: Финал -->
+    <div class="step" id="step-5">
+      <img class="sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnhmcXZ4OG43OGd1ejEybWVneGFmcnRydWVieW8yMmcxcTRsMHp1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/kZqvnu2J422s0/giphy.gif" alt="Happy Dog">
+      <h2>Урааа! 🎉💖</h2>
+      <p style="font-size: 1.3rem; color: #ff4d8d; font-weight: bold;">
+        Отлично, тогда до встречи, любимая! ❤️
+      </p>
+    </div>
 
+  </div>
 
-    <section id="calendar" class="hidden">
-        <h1>Выбери, когда ты свободна 📅</h1>
+  <script>
+    // Переключение шагов
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+      document.getElementById(`step-${stepNumber}`).classList.add('active');
+    }
 
-        <input type="date" id="day">
-        <input type="time" id="time">
+    // Логика для убегающей кнопки "Нет"
+    const btnNo = document.getElementById('btn-no');
+    
+    function moveButton() {
+      // Кнопка начинает прыгать по экрану случайным образом
+      const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 50);
+      const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 50);
+      
+      btnNo.style.position = 'fixed';
+      btnNo.style.left = `${Math.max(20, x)}px`;
+      btnNo.style.top = `${Math.max(20, y)}px`;
+    }
 
-        <br><br>
+    // Выбор еды (можно выбрать несколько)
+    function toggleFood(element) {
+      element.classList.toggle('selected');
+    }
 
-        <button onclick="next('food')">
-            Дальше
-        </button>
-    </section>
+    // Финальный шаг
+    function finish() {
+      nextStep(5);
+      createMoreHearts();
+    }
 
+    // Генерация плавающих сердечек на фоне
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-bg');
+      heart.innerHTML = '💗';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+      document.body.appendChild(heart);
 
-    <section id="food" class="hidden">
-        <h1>Что будем делать? 🍕</h1>
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
 
-        <div class="choices">
-            <button>🍕 Пицца</button>
-            <button>🍔 Бургеры</button>
-            <button>🍣 Суши</button>
-            <button>☕ Кофе</button>
-            <button>🍿 Попкорн</button>
-            <button>🍰 Сладкое</button>
-        </div>
+    setInterval(createHeart, 400);
 
-        <h2>Отлично, тогда до встречи ❤️</h2>
-    </section>
+    function createMoreHearts() {
+      for(let i = 0; i < 30; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
 
-</div>
-
-<script src="script.js"></script>
-
+    // Установка сегодняшней даты по умолчанию
+    document.getElementById('date-picker').valueAsDate = new Date();
+  </script>
 </body>
 </html>
