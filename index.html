@@ -3,183 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Приглашение для тебя 💕</title>
+  <title>Приглашение</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
-    }
-
     body {
-      background-color: #ffe6f0;
-      background-image: radial-gradient(#ffb6c1 1px, transparent 1px);
-      background-size: 20px 20px;
+      margin: 0;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      overflow: hidden;
-      position: relative;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
     }
 
-    /* Карточка сайта */
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px 25px;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
-      border: 3px solid #ff99c8;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
       text-align: center;
-      max-width: 400px;
-      width: 90%;
-      z-index: 10;
-      position: relative;
+      width: 350px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    /* Стикеры и гифки */
-    .sticker {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
-      margin-bottom: 15px;
-      border-radius: 15px;
-    }
-
-    h1, h2 {
-      color: #ff4d8d;
-      margin-bottom: 15px;
-    }
-
-    p {
-      color: #666;
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
-
-    /* Шаги */
     .step {
       display: none;
-      animation: fadeIn 0.5s ease-in-out;
     }
 
     .step.active {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    .sticker {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
     }
 
-    /* Кнопки */
-    .btn-container {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 15px;
-      position: relative;
-      min-height: 50px;
-    }
-
-    button, .next-btn {
-      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-      color: white;
+    button {
+      padding: 12px 20px;
       border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 50px;
+      border-radius: 15px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
-      transition: transform 0.2s, background 0.2s;
+      background: #ff5c8a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
     button:hover {
       transform: scale(1.05);
     }
 
-    /* Убегающая кнопка Нет */
-    #btn-no {
-      background: linear-gradient(135deg, #a8a8a8 0%, #d1d1d1 100%);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      position: absolute;
-      transition: all 0.2s ease;
+    /* Кнопки в один ряд */
+    .btn-container {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 15px !important;
+      margin-top: 20px;
+      position: relative;
+      min-height: 60px;
     }
 
-    /* Поля выбора даты и времени */
+    .btn-yes {
+      position: relative !important;
+      z-index: 2;
+      margin: 0 !important;
+    }
+
+    #btn-no {
+      background: linear-gradient(135deg, #a8a8a8 0%, #d1d1d1 100%);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: relative !important;
+      z-index: 10;
+      transition: all 0.15s ease;
+      margin: 0 !important;
+    }
+
     .datetime-picker {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
 
-    input[type="date"], input[type="time"] {
+    .datetime-picker input {
       padding: 10px;
-      border: 2px solid #ff99c8;
-      border-radius: 12px;
-      outline: none;
-      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
       text-align: center;
-      color: #ff4d8d;
-    }
-
-    /* Кнопки еды */
-    .food-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .food-option {
-      background: #fff0f5;
-      border: 2px solid #ffb6c1;
-      color: #ff4d8d;
-      padding: 10px;
-      border-radius: 15px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .food-option.selected {
-      background: #ff758c;
-      color: white;
-      border-color: #ff758c;
-    }
-
-    /* Фон с падающими сердечками */
-    .heart-bg {
-      position: absolute;
-      color: #ffb6c1;
-      font-size: 20px;
-      top: -20px;
-      animation: fall linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(105vh) rotate(360deg);
-      }
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    
     <!-- Шаг 1: Приветствие -->
     <div class="step active" id="step-1">
-      <img class="sticker" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYzb2FmMXYxczYxb2Vrb2c3a3Aya2tqbTlqdXZuMG42aWkxcHZwYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" alt="Pomeranian Spitz">
+      <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
       <h1>Привет, бусинка! 💖</h1>
       <p>У меня к тебе есть один очень важный вопрос...</p>
       <button onclick="nextStep(2)">Открыть ✨</button>
     </div>
 
-<!-- Шаг 2: Главный вопрос + Убегающая кнопка -->
+    <!-- Шаг 2: Главный вопрос -->
     <div class="step" id="step-2">
       <img class="sticker" src="https://media.tenor.com/images/737e408d6c7ee339a9c513be88ef779d/tenor.gif" alt="Cute Dog">
       <h2>Пойдешь со мной на свидание? 💕💕</h2>
@@ -188,7 +119,7 @@
         <button id="btn-no" onmouseover="moveButton()" onclick="moveButton()">Нет 😭</button>
       </div>
     </div>
-    
+
     <!-- Шаг 3: Выбор даты и времени -->
     <div class="step" id="step-3">
       <h2>Отлично! 🎉</h2>
@@ -197,90 +128,41 @@
         <input type="date" id="date-picker">
         <input type="time" id="time-picker" value="18:00">
       </div>
-      <button onclick="nextStep(4)">Дальше ➡️</button>
+      <button onclick="nextStep(4)">Дальше ➔</button>
     </div>
 
-    <!-- Шаг 4: Выбор еды -->
+    <!-- Шаг 4: Финал -->
     <div class="step" id="step-4">
-      <h2>Что будем покушать? 🍕</h2>
-      <p>Выбери всё, что хочешь:</p>
-      <div class="food-grid">
-        <div class="food-option" onclick="toggleFood(this)">Пицца 🍕</div>
-        <div class="food-option" onclick="toggleFood(this)">Бургеры 🍔</div>
-        <div class="food-option" onclick="toggleFood(this)">Суши 🍣</div>
-        <div class="food-option" onclick="toggleFood(this)">Шаурма 🌯</div>
-        <div class="food-option" onclick="toggleFood(this)" style="grid-column: span 2;">Сладкое 🍰</div>
-      </div>
-      <button onclick="finish()">Готово! 🥰</button>
+      <h2>Ура! До встречи! 🥰</h2>
+      <p>Я буду очень тебя ждать!</p>
     </div>
-
-    <!-- Шаг 5: Финал -->
-    <div class="step" id="step-5">
-      <img class="sticker" src="https://media.tenor.com/tE35LIn8-cAAAAAC/dog-pomeranian.gif" alt="Pomeranian Spitz">
-      <h2>Урааа! 🎉💖</h2>
-      <p style="font-size: 1.3rem; color: #ff4d8d; font-weight: bold;">
-        Отлично, тогда до встречи, любимая! ❤️
-      </p>
-    </div>
-
   </div>
 
   <script>
-    // Переключение шагов
     function nextStep(stepNumber) {
-      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
-      document.getElementById(`step-${stepNumber}`).classList.add('active');
+      document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.getElementById('step-' + stepNumber).classList.add('active');
     }
 
-    // Логика для убегающей кнопки "Нет"
-    const btnNo = document.getElementById('btn-no');
-    
     function moveButton() {
-      // Кнопка начинает прыгать по экрану случайным образом
-      const x = Math.random() * (window.innerWidth - btnNo.offsetWidth - 50);
-      const y = Math.random() * (window.innerHeight - btnNo.offsetHeight - 50);
+      const btn = document.getElementById('btn-no');
+      const container = document.getElementById('no-container');
       
-      btnNo.style.position = 'fixed';
-      btnNo.style.left = `${Math.max(20, x)}px`;
-      btnNo.style.top = `${Math.max(20, y)}px`;
+      const containerRect = container.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+      
+      const maxX = containerRect.width - btnRect.width;
+      const maxY = 150; 
+
+      const randomX = (Math.random() - 0.5) * 200;
+      const randomY = (Math.random() - 0.5) * 100;
+
+      btn.style.position = 'absolute';
+      btn.style.left = randomX + 'px';
+      btn.style.top = randomY + 'px';
     }
-
-    // Выбор еды (можно выбрать несколько)
-    function toggleFood(element) {
-      element.classList.toggle('selected');
-    }
-
-    // Финальный шаг
-    function finish() {
-      nextStep(5);
-      createMoreHearts();
-    }
-
-    // Генерация плавающих сердечек на фоне
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.classList.add('heart-bg');
-      heart.innerHTML = '💗';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-      heart.style.fontSize = Math.random() * 15 + 15 + 'px';
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
-    }
-
-    setInterval(createHeart, 400);
-
-    function createMoreHearts() {
-      for(let i = 0; i < 30; i++) {
-        setTimeout(createHeart, i * 100);
-      }
-    }
-
-    // Установка сегодняшней даты по умолчанию
-    document.getElementById('date-picker').valueAsDate = new Date();
   </script>
 </body>
 </html>
