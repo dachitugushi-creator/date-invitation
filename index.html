@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="card">
+
+    <section id="welcome">
+        <h1>Привет! 😊</h1>
+        <p>У меня к тебе важный вопрос...</p>
+        <button onclick="next('date')">Продолжить</button>
+    </section>
+
+
+    <section id="date" class="hidden">
+        <h1>Пойдёшь со мной на свидание? 💕</h1>
+
+        <button onclick="next('calendar')">Да ❤️</button>
+        <button id="noBtn">Нет 😢</button>
+    </section>
+
+
+    <section id="calendar" class="hidden">
+        <h1>Выбери, когда ты свободна 📅</h1>
+
+        <input type="date" id="day">
+        <input type="time" id="time">
+
+        <br><br>
+
+        <button onclick="next('food')">
+            Дальше
+        </button>
+    </section>
+
+
+    <section id="food" class="hidden">
+        <h1>Что будем делать? 🍕</h1>
+
+        <div class="choices">
+            <button>🍕 Пицца</button>
+            <button>🍔 Бургеры</button>
+            <button>🍣 Суши</button>
+            <button>☕ Кофе</button>
+            <button>🍿 Попкорн</button>
+            <button>🍰 Сладкое</button>
+        </div>
+
+        <h2>Отлично, тогда до встречи ❤️</h2>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
